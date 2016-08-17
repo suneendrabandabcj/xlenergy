@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.utility.registration.model.ServicePlan" table="serviceplan" catalog="customerutility">
+        <id name="planId" type="java.lang.Long">
+            <column name="planId" />
+            <generator class="increment" />
+        </id>
+        <property name="planDetails" type="java.lang.String">
+            <column name="planDetails"/>
+        </property>
+        <property name="cancellationFee" type="int">
+            <column name="cancellationFee" />
+        </property>
+    </class>
+</hibernate-mapping>
