@@ -1,0 +1,72 @@
+<?xml version="1.0" ?>
+<wsdl:definitions name="UtilityService" targetNamespace="http://soap.ws.registration.utility.com/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://soap.ws.registration.utility.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://soap.ws.registration.utility.com/" xmlns:tns="http://soap.ws.registration.utility.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="getAllServicePlans" type="tns:getAllServicePlans"></xs:element>
+  <xs:element name="getAllServicePlansResponse" type="tns:getAllServicePlansResponse"></xs:element>
+  <xs:complexType name="getAllServicePlans">
+    <xs:sequence></xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAllServicePlansResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:servicePlan"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="servicePlan">
+    <xs:sequence>
+      <xs:element name="cancellationFee" type="xs:int"></xs:element>
+      <xs:element minOccurs="0" name="planDetails" type="xs:string"></xs:element>
+      <xs:element name="planId" type="xs:long"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Exception" type="tns:Exception"></xs:element>
+  <xs:complexType name="Exception">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getAllServicePlansResponse">
+    <wsdl:part element="tns:getAllServicePlansResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Exception">
+    <wsdl:part element="tns:Exception" name="Exception">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllServicePlans">
+    <wsdl:part element="tns:getAllServicePlans" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="UtilityService">
+    <wsdl:operation name="getAllServicePlans">
+      <wsdl:input message="tns:getAllServicePlans" name="getAllServicePlans">
+    </wsdl:input>
+      <wsdl:output message="tns:getAllServicePlansResponse" name="getAllServicePlansResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="UtilityServiceSoapBinding" type="tns:UtilityService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"></soap:binding>
+    <wsdl:operation name="getAllServicePlans">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getAllServicePlans">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getAllServicePlansResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UtilityService">
+    <wsdl:port binding="tns:UtilityServiceSoapBinding" name="UtilityServiceImplPort">
+      <soap:address location="http://localhost:8080/XcelCustomerWS/Services/UtilityService"></soap:address>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
